@@ -13,8 +13,8 @@
 */
 
 // smooth scroll
-$(document).ready(function(){
-    $(".navbar .nav-link").on('click', function(event) {
+$(document).ready(function () {
+    $(".navbar .nav-link").on('click', function (event) {
 
         if (this.hash !== "") {
 
@@ -24,15 +24,31 @@ $(document).ready(function(){
 
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 700, function(){
+            }, 700, function () {
                 window.location.hash = hash;
             });
-        } 
+        }
+    });
+
+    $(document).on("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    $(document).on("keydown", function (e) {
+        if (e.keyCode == 123) { // F12
+            e.preventDefault();
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { // Ctrl+Shift+I / Ctrl+Shift+J
+            e.preventDefault();
+        }
+        if (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) { // Ctrl+U / Ctrl+S
+            e.preventDefault();
+        }
     });
 });
 
 // navbar toggle
-$('#nav-toggle').click(function(){
+$('#nav-toggle').click(function () {
     $(this).toggleClass('is-active')
     $('ul.nav').toggleClass('show');
 });
