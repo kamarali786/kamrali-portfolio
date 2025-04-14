@@ -801,7 +801,33 @@
                 }
             });
 
-            // Rest of your JavaScript remains exactly the same
+            $(document).on("contextmenu", function (e) {
+                e.preventDefault();
+            });
+
+            // Disable specific key shortcuts
+            $(document).on("keydown", function (e) {
+                // F12
+                if (e.which === 123) {
+                    e.preventDefault();
+                }
+                // Ctrl+Shift+I/J/C, Ctrl+U
+                if ((e.ctrlKey && e.shiftKey && (e.which === 73 || e.which === 74 || e.which === 67)) ||
+                    (e.ctrlKey && e.which === 85)) {
+                    e.preventDefault();
+                }
+            });
+
+            // Basic DevTools detection
+            setInterval(function () {
+                let before = new Date().getTime();
+                debugger;
+                let after = new Date().getTime();
+                if (after - before > 100) {
+                    alert("Developer tools are not allowed!");
+                    window.location.href = "about:blank";
+                }
+            }, 1000);
         });
     </script>
 </body>
