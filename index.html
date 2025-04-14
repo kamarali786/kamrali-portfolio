@@ -1,142 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Antique Portfolio</title>
+    <title>Kamarali Maknojiya | PHP Laravel Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="./assets/imgs/favicon.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts (Cinzel for antique serif) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
-        body {
-            background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #f4e8c1;
-            font-family: 'Crimson Text', serif;
-            color: #3c2f2f;
-            line-height: 1.6;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            cursor: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
         /* Navbar */
         .navbar {
-            background: rgba(60, 47, 47, 0.9);
-            border-bottom: 3px solid #d4a017;
+            background-color: transparent;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
         }
-        .navbar-brand, .nav-link {
-            font-family: 'Cinzel', serif;
-            color: #f4e8c1 !important;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.436) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            background-color: var(--primary-color);
+        }
+
+        .nav-link {
+            color: var(--light-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: var(--primary-color) !important;
+        }
+
         .nav-link:hover {
-            color: #d4a017 !important;
+            color: var(--secondary-color) !important;
         }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
         /* Hero Section */
         #hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), linear-gradient(to bottom, #f4e8c1, #e6d3a3);
-            border-bottom: 5px solid #d4a017;
-        }
-        #hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            color: #3c2f2f;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        #hero .typewriter {
-            font-size: 1.5rem;
-            color: #6b4e31;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
             overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #3c2f2f;
-            animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
         }
-        @keyframes typing {
-            0% { width: 0; }
-            50% { width: 100%; }
-            100% { width: 0; }
+
+        .hero-content {
+            z-index: 2;
         }
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #3c2f2f; }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
+
+        #hero .lead {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./assets/imgs/banner.avif') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-light {
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+            margin-left: 15px;
+        }
+
+        .btn-outline-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
         /* About Section */
         #about {
-            padding: 80px 0;
-            background: url('https://www.transparenttextures.com/patterns/canvas.png'), #f4e8c1;
+            padding: 100px 0;
+            background-color: white;
         }
-        #about .card {
-            background: #fff8e1;
-            border: 2px solid #d4a017;
+
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-img {
             border-radius: 10px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            font-family: 'Crimson Text', serif;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
         }
+
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         /* Projects Section */
         #projects {
-            padding: 80px 0;
-            background: url('https://www.transparenttextures.com/patterns/old-map.png'), #e6d3a3;
+            padding: 100px 0;
+            background-color: var(--light-color);
         }
+
         .project-card {
-            background: #fff8e1;
-            border: 1px solid #d4a017;
+            background: white;
             border-radius: 10px;
-            transition: transform 0.3s;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
         }
+
         .project-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
-        .project-card img {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
         }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tech-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
         /* Contact Section */
         #contact {
-            padding: 80px 0;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #f4e8c1;
+            padding: 100px 0;
+            background-color: white;
         }
-        #contact .form-control {
-            background: #fff8e1;
-            border: 1px solid #d4a017;
-            font-family: 'Crimson Text', serif;
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            height: 50px;
             border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
         }
-        #contact .btn {
-            background: #3c2f2f;
-            color: #f4e8c1;
-            font-family: 'Cinzel', serif;
-            border: 2px solid #d4a017;
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: none;
         }
-        #contact .btn:hover {
-            background: #d4a017;
-            color: #3c2f2f;
+
+        textarea.form-control {
+            height: auto;
         }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
         /* Footer */
         footer {
-            background: #3c2f2f;
-            color: #f4e8c1;
-            padding: 20px 0;
-            font-family: 'Cinzel', serif;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
         }
-        footer a {
-            color: #d4a017;
-            margin: 0 10px;
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
             text-decoration: none;
         }
-        footer a:hover {
-            color: #f4e8c1;
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* Cursor Styles */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #31c9f3;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: all 0.1s ease;
+        }
+
+        .cursor-inner {
+            width: 8px;
+            height: 8px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.2s ease;
+        }
+
+        .cursor-hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .cursor-inner-hover {
+            opacity: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-outline-light {
+                margin-left: 0;
+                margin-top: 15px;
+            }
         }
     </style>
 </head>
+
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-inner"></div>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Your Name</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/imgs/K.png" alt="KM Logo" width="110" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -152,22 +458,58 @@
 
     <!-- Hero Section -->
     <section id="hero">
-        <div>
-            <h1>Welcome to My Portfolio</h1>
-            <p class="typewriter">PHP Developer with a Passion for Code</p>
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="fade-in">Kamarali Maknojiya</h1>
+                    <p class="lead fade-in" style="animation-delay: 0.2s;">PHP Laravel Developer</p>
+                    <div class="d-flex justify-content-center hero-buttons fade-in" style="animation-delay: 0.4s;">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+                        <a href="./assets/docs/Kamarali_Maknojiya_Resume.pdf" download class="btn btn-outline-light ms-3">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">About Me</h2>
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="card">
-                        <p>I’m a PHP developer with 10 years of experience, crafting robust web applications with elegance and precision. Skilled in Laravel, CodeIgniter, and full-stack development, I thrive on turning ideas into seamless digital experiences. Based in Ahmedabad, I’m inspired by antique aesthetics and modern tech.</p>
-                        <p><strong>Skills:</strong> PHP, Laravel, MySQL, JavaScript, Bootstrap, jQuery, HTML/CSS</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="assets/imgs/side.avif" alt="Developer" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-7">
+                    <h3>Who I Am</h3>
+                    <p>I'm a passionate PHP Laravel developer with expertise in building modern web applications. My
+                        journey in web development began with a curiosity about how websites work, and it has grown into
+                        a full-fledged career where I create efficient, scalable solutions.</p>
+
+                    <p>I specialize in backend development using PHP frameworks like Laravel, but I'm also comfortable
+                        working with frontend technologies to deliver complete solutions. My approach combines technical
+                        excellence with clean code practices and attention to detail.</p>
+
+                    <h4 class="mt-4">My Skills</h4>
+                    <div class="skills-list">
+                        <span class="skill-badge">PHP</span>
+                        <span class="skill-badge">Laravel</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">jQuery</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">REST APIs</span>
+                        <span class="skill-badge">MVC Architecture</span>
                     </div>
+
+                    <a href="#contact" class="btn btn-primary mt-4">Hire Me</a>
                 </div>
             </div>
         </div>
@@ -176,35 +518,61 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">My Projects</h2>
+            <h2 class="section-title">My Projects</h2>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4">
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200?text=Project+1" class="img-fluid" alt="Project 1">
-                        <div class="p-3">
-                            <h5>PHP E-Commerce Platform</h5>
-                            <p>A custom-built online store using Laravel and MySQL, with secure payment integration.</p>
-                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
+                        <img src="./assets/imgs/project 1.jpg" alt="E-Commerce" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">E-Commerce Platform</h3>
+                            <p>A full-featured online store built with Laravel, featuring product management, cart
+                                functionality, and secure payment processing.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">Stripe API</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Project</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4">
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200?text=Project+2" class="img-fluid" alt="Project 2">
-                        <div class="p-3">
-                            <h5>Blogging System</h5>
-                            <p>A dynamic blog platform with CodeIgniter, featuring user authentication and comments.</p>
-                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
+                        <img src="./assets/imgs/project 2.jpg" alt="Task Manager" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">Task Management System</h3>
+                            <p>A collaborative task management application with real-time updates, user roles, and
+                                project tracking features.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">AJAX</span>
+                                <span class="tech-badge">jQuery</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Project</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4">
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200?text=Project+3" class="img-fluid" alt="Project 3">
-                        <div class="p-3">
-                            <h5>Inventory Management</h5>
-                            <p>A PHP-based system for tracking stock, built with Bootstrap and jQuery.</p>
-                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
+                        <img src="./assets/imgs/project 3.jpg" alt="Blog System" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">CMS Blog Platform</h3>
+                            <p>A content management system for blogging with markdown support, categories, tags, and SEO
+                                optimization.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">jQuery</span>
+                                <span class="tech-badge">AJAX</span>
+                                <span class="tech-badge">Razorpay</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -215,23 +583,82 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">Get in Touch</h2>
+            <h2 class="section-title">Get In Touch</h2>
             <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="card p-4">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form">
+                        <!-- FormSubmit.co Integration -->
+                        <form action="https://formsubmit.co/maknojiyakamarali504@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="New Portfolio Message!">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://yourportfolio.com/thank-you.html">
+                            <input type="hidden" name="_captcha" value="true">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                            required>
+                                        <div class="invalid-feedback">Please enter your name.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email"
+                                            required>
+                                        <div class="invalid-feedback">Please enter a valid email.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                <div class="invalid-feedback">Please enter a subject.</div>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Your Message"
+                                    required></textarea>
+                                <div class="invalid-feedback">Please enter your message.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+
+                        <div id="formSuccess" class="alert alert-success mt-3" style="display: none;">
+                            <i class="fas fa-check-circle me-2"></i> Thank you! Your message has been sent successfully.
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Location</h5>
+                                <p class="small text-muted">
+                                    Behind Old Shia Masjid, Chadotar, Palanpur,<br>
+                                    Banaskantha - 385001, Gujarat, India.
+                                </p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p><a href="tel:9558696170">+91 9558696170</a></p>
+                            </div>
                         </div>
-                        <button type="button" class="btn w-100" id="contactBtn">Send Message</button>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p><a href="mailto:maknojiyakamarali504@gmail.com">maknojiyakamarali504@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,44 +666,144 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center">
-        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
-        <div>
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="#">Email</a>
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/kamarali786" target="_blank" class="social-link"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/kamarali-maknojiya-065905277/" target="_blank"
+                    class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/kamarali_m" target="_blank" class="social-link"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/maknojiya_ali_786/?next=%2F" target="_blank" class="social-link"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61562585121140" target="_blank" class="social-link"><i
+                        class="fab fa-facebook"></i></a>
+            </div>
+            <p>&copy; <span id="year"></span> Kamarali Maknojiya. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
+            // Set current year in footer
+            $('#year').text(new Date().getFullYear());
+
+            // Navbar scroll effect
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+
             // Smooth scrolling for nav links
-            $('a.nav-link').on('click', function(event) {
+            $('a.nav-link').on('click', function (e) {
                 if (this.hash !== '') {
-                    event.preventDefault();
+                    e.preventDefault();
                     const hash = this.hash;
                     $('html, body').animate({
-                        scrollTop: $(hash).offset().top
+                        scrollTop: $(hash).offset().top - 70
                     }, 800);
                 }
             });
 
-            // Contact form submission alert (placeholder)
-            $('#contactBtn').on('click', function() {
-                const name = $('#name').val();
-                const email = $('#email').val();
-                const message = $('#message').val();
-                if (name && email && message) {
-                    alert('Thank you, ' + name + '! Your message has been sent.');
-                    $('#name, #email, #message').val('');
+            // Custom Cursor
+            const cursor = document.querySelector('.cursor');
+            const cursorInner = document.querySelector('.cursor-inner');
+            const links = document.querySelectorAll('a, button, .project-card, .skill-badge, .nav-link');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorInner.style.left = e.clientX + 'px';
+                cursorInner.style.top = e.clientY + 'px';
+            });
+
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                    cursorInner.classList.add('cursor-inner-hover');
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
+                    cursorInner.classList.remove('cursor-inner-hover');
+                });
+            });
+
+            // Form submission handling
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+                const form = this;
+                const submitBtn = $(this).find('[type="submit"]');
+                const originalText = submitBtn.html();
+
+                // Show loading state
+                submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+                submitBtn.prop('disabled', true);
+
+                // Submit form via FormSubmit
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            $('#formSuccess').fadeIn();
+                            form.reset();
+                        } else {
+                            alert('Error sending message. Please try again later.');
+                        }
+                    })
+                    .catch(error => {
+                        alert('Error sending message. Please try again later.');
+                    })
+                    .finally(() => {
+                        submitBtn.html(originalText);
+                        submitBtn.prop('disabled', false);
+                    });
+            });
+
+            // Animate elements when they come into view
+            function animateOnScroll() {
+                $('.fade-in').each(function () {
+                    const elementTop = $(this).offset().top;
+                    const elementBottom = elementTop + $(this).outerHeight();
+                    const viewportTop = $(window).scrollTop();
+                    const viewportBottom = viewportTop + $(window).height();
+
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('animate__animated animate__fadeInUp');
+                    }
+                });
+            }
+
+            // Run once on page load
+            animateOnScroll();
+
+            // Run on scroll
+            $(window).scroll(animateOnScroll);
+        });
+        $(document).ready(function () {
+            // Set current year in footer
+            $('#year').text(new Date().getFullYear());
+
+            // Navbar scroll effect - UPDATED
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
                 } else {
-                    alert('Please fill out all fields.');
+                    $('.navbar').removeClass('scrolled');
                 }
             });
+
+            // Rest of your JavaScript remains exactly the same
         });
     </script>
 </body>
+
 </html>
