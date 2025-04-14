@@ -1,278 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with Meyawo landing page.">
-    <meta name="author" content="Devcrud">
-    <title>Kamar Ali Maknojiya | Web Developer Portfolio</title>
-    <link rel="icon" type="image/png" href="./assets/imgs/favicon.webp">
-    <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    <!-- Bootstrap + Meyawo main styles -->
-    <link rel="stylesheet" href="assets/css/meyawo.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function () {
-            emailjs.init("DJ5jvkb-xNgvQ0Fik");
-        })();
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Antique Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Cinzel for antique serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #f4e8c1;
+            font-family: 'Crimson Text', serif;
+            color: #3c2f2f;
+            line-height: 1.6;
+        }
+        /* Navbar */
+        .navbar {
+            background: rgba(60, 47, 47, 0.9);
+            border-bottom: 3px solid #d4a017;
+        }
+        .navbar-brand, .nav-link {
+            font-family: 'Cinzel', serif;
+            color: #f4e8c1 !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link:hover {
+            color: #d4a017 !important;
+        }
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), linear-gradient(to bottom, #f4e8c1, #e6d3a3);
+            border-bottom: 5px solid #d4a017;
+        }
+        #hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #3c2f2f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #hero .typewriter {
+            font-size: 1.5rem;
+            color: #6b4e31;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #3c2f2f;
+            animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3c2f2f; }
+        }
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            background: url('https://www.transparenttextures.com/patterns/canvas.png'), #f4e8c1;
+        }
+        #about .card {
+            background: #fff8e1;
+            border: 2px solid #d4a017;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-family: 'Crimson Text', serif;
+        }
+        /* Projects Section */
+        #projects {
+            padding: 80px 0;
+            background: url('https://www.transparenttextures.com/patterns/old-map.png'), #e6d3a3;
+        }
+        .project-card {
+            background: #fff8e1;
+            border: 1px solid #d4a017;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .project-card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        /* Contact Section */
+        #contact {
+            padding: 80px 0;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #f4e8c1;
+        }
+        #contact .form-control {
+            background: #fff8e1;
+            border: 1px solid #d4a017;
+            font-family: 'Crimson Text', serif;
+            border-radius: 5px;
+        }
+        #contact .btn {
+            background: #3c2f2f;
+            color: #f4e8c1;
+            font-family: 'Cinzel', serif;
+            border: 2px solid #d4a017;
+        }
+        #contact .btn:hover {
+            background: #d4a017;
+            color: #3c2f2f;
+        }
+        /* Footer */
+        footer {
+            background: #3c2f2f;
+            color: #f4e8c1;
+            padding: 20px 0;
+            font-family: 'Cinzel', serif;
+        }
+        footer a {
+            color: #d4a017;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #f4e8c1;
+        }
+    </style>
 </head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-
-    <!-- Page Navbar -->
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="logo" href="#">
-                <img src="./assets/imgs/logo.png" alt="KM Logo" width="80" height="70">
-            </a>
-            <ul class="nav">
-                <li class="item">
-                    <a class="link" href="#home">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#testmonial">Testmonial</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
-            </ul>
-            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </a>
+            <a class="navbar-brand" href="#">Your Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </nav><!-- End of Page Navbar -->
+    </nav>
 
-    <!-- page header -->
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div class="header-content container">
-            <h1 class="header-title">
-                <span class="up">HI!</span>
-                <span class="down">I am Kamarali Maknojiya</span>
-            </h1>
-            <p class="header-subtitle">PHP WEB DEVELOPER</p>
-        </div>
-    </header><!-- end of page header -->
-
-    <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    <img src="assets/imgs/man.png" class="about-img" alt="Kamarali Maknojiya - PHP Laravel Developer">
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle">Who Am I?</p>
-                    <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        Hi There! I'm <strong>Kamarali Maknojiya</strong>, a passionate and dedicated <strong>PHP
-                            Laravel Developer</strong>.
-                        I have experience in building modern, scalable web applications and strive to create efficient,
-                        well-structured,
-                        and secure solutions. I am highly adaptable, self-motivated, and always eager to learn and
-                        implement new technologies
-                        in web development.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li><strong>🎂 Birthday:</strong> Aug 20, 2004</li>
-                        <li><strong>📞 Phone:</strong> - +91 (955) 869 6170</li>
-                        <li><strong>📧 Email:</strong> - maknojiyakamarali504@gmail.com</li>
-                        <li><strong>📍 Location:</strong> - B/h Shia Masjid, Chadotar Palanpur,
-                            GJ 385001</li>
-                        <li><strong>💼 Freelancing:</strong> Available</li>
-                    </ul>
-                    <a href="assets/cv/Kamarali Resume.pdf" download="KamarAli_CV.pdf">
-                        <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
-                    </a>
-
-                </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
-    <!-- Education Section -->
-    <section class="section" id="education">
-        <div class="container text-center">
-            <p class="section-subtitle">My Educational Background</p>
-            <h2 class="section-title mb-3">Education</h2>
-            <p>
-                I have completed my <strong>Bachelor of Computer Applications (BCA)</strong> from
-                <strong>B K Mehta IT Center, Palanpur</strong> with a first-class distinction (8.3/10).
-                Prior to that, I completed my 12th grade at <strong>Shri C B Gandhi Nootan Highschool, Palanpur</strong>
-                with 52%.
-                My academic journey has helped me build a strong foundation in programming and web development.
-            </p>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div>
+            <h1>Welcome to My Portfolio</h1>
+            <p class="typewriter">PHP Developer with a Passion for Code</p>
         </div>
     </section>
 
-
-    <!-- section -->
-    <section class="section-sm bg-primary">
-        <!-- container -->
-        <div class="container text-center text-sm-left">
-            <!-- row -->
-            <div class="row align-items-center">
-                <div class="col-sm offset-md-1 mb-4 mb-md-0">
-                    <h6 class="title text-light">Want to work with me?</h6>
-                    <p class="m-0 text-light">Always feel Free to Contact & Hire me</p>
-                </div>
-                <div class="col-sm offset-sm-2 offset-md-3">
-                    <button class="btn btn-lg my-font btn-light rounded"><a href="#contact">Hire Me</a></button>
-                </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </section> <!-- end of section -->
-
-    <!-- testimonial section -->
-    <section class="section" id="testmonial">
-        <div class="container text-center">
-            <p class="section-subtitle">What Think Client About Me ?</p>
-            <h6 class="section-title mb-6">Testmonial</h6>
-
-            <!-- row -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">About Me</h2>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar2.jpg" class="testimonial-card-img"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis
-                                adipisci nihil.</p>
-                            <h6 class="testimonial-card-title">Emily Reb</h6>
+                <div class="col-md-8 mx-auto">
+                    <div class="card">
+                        <p>I’m a PHP developer with 10 years of experience, crafting robust web applications with elegance and precision. Skilled in Laravel, CodeIgniter, and full-stack development, I thrive on turning ideas into seamless digital experiences. Based in Ahmedabad, I’m inspired by antique aesthetics and modern tech.</p>
+                        <p><strong>Skills:</strong> PHP, Laravel, MySQL, JavaScript, Bootstrap, jQuery, HTML/CSS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">My Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200?text=Project+1" class="img-fluid" alt="Project 1">
+                        <div class="p-3">
+                            <h5>PHP E-Commerce Platform</h5>
+                            <p>A custom-built online store using Laravel and MySQL, with secure payment integration.</p>
+                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar3.jpg" class="testimonial-card-img"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200?text=Project+2" class="img-fluid" alt="Project 2">
+                        <div class="p-3">
+                            <h5>Blogging System</h5>
+                            <p>A dynamic blog platform with CodeIgniter, featuring user authentication and comments.</p>
+                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
                         </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis
-                                adipisci nihil.</p>
-                            <h6 class="testimonial-card-title">Emily Reb</h6>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200?text=Project+3" class="img-fluid" alt="Project 3">
+                        <div class="p-3">
+                            <h5>Inventory Management</h5>
+                            <p>A PHP-based system for tracking stock, built with Bootstrap and jQuery.</p>
+                            <a href="#" class="btn btn-sm" style="background: #3c2f2f; color: #f4e8c1;">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> <!-- end of container -->
-    </section> <!-- end of testimonial section -->
+        </div>
+    </section>
 
-
-
-    <!-- contact section -->
-    <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-            <!-- Contact Form -->
-            <form class="contact-form col-md-10 col-lg-8 m-auto">
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" id="name" class="form-control" placeholder="Your Name">
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-family: 'Cinzel', serif;">Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card p-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="button" class="btn w-100" id="contactBtn">Send Message</button>
                     </div>
-                    <div class="form-group col-sm-6">
-                        <input type="email" id="email" class="form-control" placeholder="Enter Email">
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <textarea id="message" rows="6" class="form-control" placeholder="Write Something"></textarea>
-                    </div>
-                    <div class="form-group col-sm-12 mt-3">
-                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
-                    </div>
-                    <div id="form-message" class="col-sm-12 mt-3"></div>
                 </div>
-            </form>
-
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
-
-    <!-- footer -->
-    <div class="container">
-        <footer class="footer">
-            <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
-                    href="http://www.devcrud.com">Kamarali</a>
-            </p>
-            <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="https://www.facebook.com/profile.php?id=61562585121140" target="_blank" class="link"><i
-                        class="ti-facebook"></i></a>
-                <a href="https://x.com/kamarali_m" target="_blank" class="link"><i class="ti-twitter-alt"></i></a>
-                <a href="https://www.instagram.com/maknojiya_ali_786/?next=%2F" target="_blank" class="link"><i
-                        class="ti-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/kamarali-maknojiya-065905277/" target="_blank" class="link"><i
-                        class="ti-linkedin"></i></a>
             </div>
-        </footer>
-    </div> <!-- end of page footer -->
+        </div>
+    </section>
 
-    <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        <div>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
 
-    <!-- bootstrap 3 affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-
-    <!-- Meyawo js -->
-    <script src="assets/js/meyawo.js"></script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $(".contact-form").submit(function (e) {
-                e.preventDefault();
-
-                // Get form values
-                var name = $("#name").val().trim();
-                var email = $("#email").val().trim();
-                var message = $("#message").val().trim();
-                var formMessage = $("#form-message");
-
-                if (formMessage.length === 0) {
-                    $(".contact-form").append('<div id="form-message"></div>');
-                    formMessage = $("#form-message");
+        $(document).ready(function() {
+            // Smooth scrolling for nav links
+            $('a.nav-link').on('click', function(event) {
+                if (this.hash !== '') {
+                    event.preventDefault();
+                    const hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800);
                 }
+            });
 
-                // Basic validation
-                if (name === "" || email === "" || message === "") {
-                    formMessage.html('<div class="alert alert-danger">All fields are required.</div>');
-                    return;
+            // Contact form submission alert (placeholder)
+            $('#contactBtn').on('click', function() {
+                const name = $('#name').val();
+                const email = $('#email').val();
+                const message = $('#message').val();
+                if (name && email && message) {
+                    alert('Thank you, ' + name + '! Your message has been sent.');
+                    $('#name, #email, #message').val('');
+                } else {
+                    alert('Please fill out all fields.');
                 }
-
-                // EmailJS parameters
-                var params = {
-                    from_name: name,
-                    from_email: email,
-                    message: message
-                };
-
-                // Send email via EmailJS
-                emailjs.send("service_4drocoa", "template_tncnn79", params)
-                    .then(function (response) {
-                        formMessage.html('<div class="alert alert-success">Message sent successfully!</div>');
-                        $(".contact-form")[0].reset();
-                    }, function (error) {
-                        formMessage.html('<div class="alert alert-danger">Error sending message. Please try again.</div>');
-                    });
             });
         });
     </script>
-
-
 </body>
-
 </html>

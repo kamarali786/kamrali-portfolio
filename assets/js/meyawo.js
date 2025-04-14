@@ -35,13 +35,13 @@ $(document).ready(function () {
     });
 
     $(document).on("keydown", function (e) {
-        if (e.keyCode == 123) { // F12
+        if (e.keyCode == 123) { 
             e.preventDefault();
         }
-        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { // Ctrl+Shift+I / Ctrl+Shift+J
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { 
             e.preventDefault();
         }
-        if (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) { // Ctrl+U / Ctrl+S
+        if (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) { 
             e.preventDefault();
         }
     });
