@@ -1415,27 +1415,6 @@
             // Show loading state
             submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
             submitBtn.prop('disabled', true);
-
-            // Submit form via FormSubmit
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        $('#formSuccess').fadeIn();
-                        form.reset();
-                    } else {
-                        alert('Error sending message. Please try again later.');
-                    }
-                })
-                .catch(error => {
-                    alert('Error sending message. Please try again later.');
-                })
-                .finally(() => {
-                    submitBtn.html(originalText);
-                    submitBtn.prop('disabled', false);
-                });
         });
 
         // Set current year in footer
