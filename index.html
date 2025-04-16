@@ -1217,15 +1217,6 @@
                 message: this.message.value,
                 attachment: base64Image,
             };
-
-            emailjs.send("service_4drocoa", "template_tncnn79", templateParams).then(
-                function () {
-                    alert("Email sent successfully!");
-                },
-                function (error) {
-                    alert("Failed to send email: " + JSON.stringify(error));
-                }
-            );
         });
 
         function toBase64(file) {
@@ -1238,15 +1229,27 @@
         }
         document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
+
+            const submitBtn = document.querySelector('#contact-form button[type="submit"]');
+            const originalText = submitBtn.innerText;
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+
             emailjs.sendForm('service_4drocoa', 'template_tncnn79', this)
                 .then(() => {
                     document.getElementById('formSuccess').style.display = 'block';
                     document.getElementById('contact-form').reset();
                 }, (error) => {
                     console.error('Email sending failed:', error);
+                    alert('Something went wrong. Please try again later.');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalText;
                 });
-
         });
+
         // Mobile detection for cursor
         function isMobileDevice() {
             return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
@@ -1415,6 +1418,8 @@
             // Show loading state
             submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
             submitBtn.prop('disabled', true);
+
+            y
         });
 
         // Set current year in footer
